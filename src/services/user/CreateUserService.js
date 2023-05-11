@@ -6,6 +6,7 @@ module.exports = async ({ name, last_name, email, password, confirm_password, ph
     email
   });
   if (emailExists) throw new Error('Email already exists!');
+  console.log(emailExists);
 
   const phoneExists = await UserModel.findOne({
     phone_number

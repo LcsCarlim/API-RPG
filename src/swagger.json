@@ -1,0 +1,269 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API RPG",
+    "description": "Essa API tem o objetivo a manipulação de dados",
+    "termsOfService": "http://localhost:3333/terms",
+    "contact": {
+      "email": "lucas.carlim@zuvia.com.br"
+    },
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333"
+    }
+  ],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "summary": "Cadastro de usuários",
+        "description": "Essa rota será responsável por cadastrar um novo usuário. Segue a requisição com as informações corretas e com uma senha no mínimo de 6 caracteres.",
+        "tags": [
+          "Usuário"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "500": {
+            "description": "Houve um erro no registro!"
+          },
+          "200": {
+            "description": "Usuário criado com sucesso!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "summary": "Login",
+        "description": "Essa rota será responsável para efetuar login.",
+        "tags": [
+          "Usuário"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Usuário logado com sucesso!"
+          },
+          "400": {
+            "description": "Houve um erro no login!"
+          }
+        }
+      }
+    },
+    "/users/all": {
+      "get": {
+        "tags": [
+          "Usuário"
+        ],
+        "summary": "Listar usuários",
+        "description": "Essa rota é responsável em listar todos os usuários da aplicação.",
+        "responses": {
+          "200": {
+            "description": "Usuários: ",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na listagem de usuários!"
+          }
+        }
+      }
+    },
+    "/users/find/{id}": {
+      "get": {
+        "summary": "Buscar usuário por ID",
+        "description": "Essa rota será responsável por buscar um usuário pelo ID e passar as informações do próprio.",
+        "tags": [
+          "Usuário"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+          "description": "Success"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/users/delete/{id}": {
+      "delete": {
+        "summary": "Deletar um usuário",
+        "description": "Deletar o usuário pelo ID",
+        "tags": [
+          "Usuário"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do usuário",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+          "description": "Success"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
+      }
+    },
+    "/players/register": {
+      "post": {
+        "summary": "Criar player",
+        "description": "Essa rota será responsável em criar um player referente a conta que está logado.",
+        "tags": [
+          "Player"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Player"
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "Erro na criação do player!"
+          },
+          "201": {
+            "description": "Player criado!",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Player"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "confirm_password": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "cep": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "last_name", "email", "password", "confirm_password", "phone_number", "cep", "number"]
+      },
+      "Player": {
+        "type": "object",
+        "properties": {
+          "nickname": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "combate_class": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["nickname", "gender", "combate_class", "description"]
+      }
+    },
+    "securitySchemes": {
+      "bearer_token": {
+        "type": "http",
+        "description": "Coloque seu token aqui!",
+        "scheme": "bearer",
+        "in": "header",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+    "bearer_token": {
+      "type": "http",
+      "scheme": "bearer_token",
+      "bearerFormat": "JWT"
+    }
+  }
+ ]
+}

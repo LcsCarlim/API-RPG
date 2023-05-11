@@ -6,6 +6,9 @@ module.exports = async (req, res) => {
     const users = await ListAllUsersService(role);
     return res.status(200).json(users);
   } catch (error) {
-    return error;
+    return res.status(401).json({
+      error: 'Error',
+      message: error.message
+    });
   }
 };

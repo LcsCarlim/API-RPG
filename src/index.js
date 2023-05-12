@@ -3,12 +3,15 @@ const mongoose = require('mongoose');
 const routes = require('./routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./swagger.json');
+const cors = require('cors');
 
 async function open (uri) {
   await mongoose.connect(uri);
 }
 
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 

@@ -154,36 +154,124 @@
         ],
         "responses": {
           "200": {
-          "description": "Success"
+          "description": "Usuário deletado"
           },
           "404": {
-            "description": "Not found"
+            "description": "Usuário não encontrado"
           }
         }
       }
     },
     "/players/register": {
       "post": {
-        "summary": "Criar player",
-        "description": "Essa rota será responsável em criar um player referente a conta que está logado.",
         "tags": [
           "Player"
+        ] ,
+        "summary": "Cria um novo jogador",
+        "consumes": [
+          "application/json"
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Player"
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Player",
+            "description": "Informações do jogador a ser criado",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nickname": {
+                  "type": "string"
+                },
+                "gender": {
+                  "type": "string"
+                },
+                "combat_class": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
               }
             }
           }
-        },
+        ],
         "responses": {
-          "400": {
-            "description": "Erro na criação do player!"
-          },
           "201": {
-            "description": "Player criado!",
+            "description": "Jogador criado com sucesso",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "nickname": {
+                  "type": "string"
+                },
+                "gender": {
+                  "type": "string"
+                },
+                "combat_class": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Os dados enviados estão incorretos",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "error": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/players/find/{id}": {
+      "get": {
+        "summary": "Buscar player pelo ID",
+        "description": "Essa rota será responsável em buscar um player pelo ID",
+        "tags": [
+          "Player"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do player",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Player encontrado"
+          },
+          "400": {
+            "description": "Player não encontrado"
+          }
+        }
+      }
+    },
+    "/players/list": {
+      "get": {
+        "summary": "Listar todos os players",
+        "description": "Essa rota será responsável em buscar todos os players",
+        "tags": [
+          "Player"
+        ],
+        "responses": {
+          "200": {
+            "description": "Players",
             "content": {
               "application/json": {
                 "schema": {
@@ -191,6 +279,95 @@
                 }
               }
             }
+          }
+        },
+        "400": {
+          "description": "Erro na listagem de players"
+        }
+      }
+    },
+    "/characters/register": {
+      "post": {
+        "summary": "Criação de um personagem",
+        "description": "Essa rota será responsável em criar um personagem referente a um player",
+        "tags": [
+          "Character"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "card_name": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "player_id": {
+                    "type": "string"
+                  },
+                  "filename": {
+                    "type": "file"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Personagem criado com sucesso"
+          },
+          "400": {
+            "description": "Erro ao criar um personagem"
+          }
+        }
+      }
+    },
+    "/characters/find/{id}": {
+      "get": {
+        "summary": "Buscar personagem pelo ID",
+        "description": "Essa rota será responsável em buscar um personagem referente ao player",
+        "tags": [
+          "Character"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID do personagem",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Personagem encontrado"
+          },
+          "400": "Personagem não encontrado"
+        }
+      }
+    },
+    "/characters/list": {
+      "get": {
+        "summary": "Listar todos os personagens",
+        "description": "Essa rota será responsável em buscar todos os personagens referente ao player",
+        "tags": [
+          "Character"
+        ],
+        "responses": {
+          "200": {
+            "description": "Personagens encontrado com sucesso"
+          },
+          "400": {
+            "description": "Erro na listagem de personagens"
           }
         }
       }

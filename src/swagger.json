@@ -35,7 +35,7 @@
           "500": {
             "description": "Houve um erro no registro!"
           },
-          "200": {
+          "201": {
             "description": "Usuário criado com sucesso!",
             "content": {
               "application/json": {
@@ -320,7 +320,7 @@
           }
         },
         "responses": {
-          "200": {
+          "201": {
             "description": "Personagem criado com sucesso"
           },
           "400": {

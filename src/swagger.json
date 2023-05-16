@@ -180,7 +180,7 @@
         },
         "responses": {
           "201": {
-            "description": "Player criado com sucesso"
+            "description": "Player criado com sucesso!"
           },
           "400": {
             "description": "Erro ao criar um player"

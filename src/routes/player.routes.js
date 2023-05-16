@@ -8,7 +8,7 @@ const FindPlayerByIdController = require('../controllers/player/FindPlayerByIdCo
 const ListAllPlayersController = require('../controllers/player/ListAllPlayersController');
 
 routes.post('/register',
-  multer(documentMulterConfig).single('filename'),
+  multer(documentMulterConfig).single('player_image'),
   userAuth,
   CreatePlayerController
 );

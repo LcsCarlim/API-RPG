@@ -3,7 +3,7 @@
   "info": {
     "title": "API RPG",
     "description": "Essa API tem o objetivo a manipulação de dados",
-    "termsOfService": "https://api-f8gnzo8zy-lcscarlim.vercel.app/terms",
+    "termsOfService": "https://api-rpg-gold.vercel.app/terms",
     "contact": {
       "email": "lucas.carlim@zuvia.com.br"
     },
@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://api-f8gnzo8zy-lcscarlim.vercel.app/"
+      "url": "https://api-rpg-gold.vercel.app"
     }
   ],
   "paths": {

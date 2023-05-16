@@ -174,7 +174,7 @@
             "multipart/form-data": {
               "schema": {
                 "properties": {
-                  "player_image": {
+                  "filename": {
                     "type": "file"
                   },
                   "nickname": {
@@ -379,6 +379,9 @@
       "Player": {
         "type": "object",
         "properties": {
+          "filename": {
+            "type": "file"
+          },
           "nickname": {
             "type": "string"
           },

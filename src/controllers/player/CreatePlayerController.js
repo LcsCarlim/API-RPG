@@ -3,10 +3,10 @@ const CreatePlayerService = require('../../services/player/CreatePlayerService')
 module.exports = async (req, res) => {
   const { id } = req.user;
   const { nickname, gender, combat_class, description } = req.body;
-  const { player_image } = req.file;
+  const { filename } = req.file;
   try {
     const player = await CreatePlayerService({
-      player_image,
+      filename,
       id,
       nickname,
       gender,

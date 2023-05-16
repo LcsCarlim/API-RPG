@@ -388,7 +388,7 @@
           "gender": {
             "type": "string"
           },
-          "combate_class": {
+          "combat_class": {
             "type": "string"
           },
           "description": {

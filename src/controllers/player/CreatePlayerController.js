@@ -16,6 +16,9 @@ module.exports = async (req, res) => {
     });
     return res.status(201).json(player);
   } catch (error) {
-    return error;
+    return res.status(400).json({
+      error: 'Something wrong happened, try again!',
+      message: error.message
+    });
   }
 };

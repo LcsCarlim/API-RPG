@@ -13,7 +13,5 @@ module.exports = async ({ user_id, filename, nickname, gender, combat_class, des
     user_id
   });
 
-  await player.save();
-
   return player;
 };

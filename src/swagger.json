@@ -173,27 +173,7 @@
           "content": {
             "multipart/form-data": {
               "schema": {
-                "type": "object",
-                "properties": {
-                  "file": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "nickname": {
-                    "type": "string"
-                  },
-                  "gender": {
-                    "type": "string"
-                  },
-                  "combat_class": {
-                    "type": "string"
-                  },
-                  "description": {
-                    "type": "string"
-                  }
-                },
-                "required": ["nickname", "gender", "combat_class", "description"],
-                "x-form-data-encoding": "multipart"
+                "$ref": "#/components/schemas/Player"
               }
             }
           }

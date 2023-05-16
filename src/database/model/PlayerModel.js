@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const Player = new mongoose.Schema({
+  filename: {
+    type: String,
+    required: true
+  },
   nickname: {
     type: String,
     required: true

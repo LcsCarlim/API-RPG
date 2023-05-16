@@ -383,7 +383,8 @@
         "type": "object",
         "properties": {
           "filename": {
-            "type": "file"
+            "type": "string",
+            "format": "binary"
           },
           "nickname": {
             "type": "string"
@@ -398,7 +399,14 @@
             "type": "string"
           }
         },
-        "required": ["nickname", "gender", "combate_class", "description"]
+        "required": ["filename", "nickname", "gender", "combate_class", "description"],
+        "example": {
+          "filename": "example.jpg",
+          "nickname": "John Doe",
+          "gender": "male",
+          "combat_class": "warrior",
+          "description": "A powerful warrior with great skills."
+        }
       }
     },
     "securitySchemes": {

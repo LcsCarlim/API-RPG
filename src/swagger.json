@@ -164,77 +164,43 @@
     },
     "/players/register": {
       "post": {
+        "summary": "Criação de um personagem",
+        "description": "Essa rota será responsável em criar um personagem referente a um player",
         "tags": [
           "Player"
-        ] ,
-        "summary": "Cria um novo jogador",
-        "consumes": [
-          "application/json"
         ],
-        "parameters": [
-          {
-            "in": "body",
-            "name": "Player",
-            "description": "Informações do jogador a ser criado",
-            "required": true,
+        "requestBody": {
+          "content": {
             "multipart/form-data": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nickname": {
-                  "type": "string"
+              "schema": {
+                "properties": {
+                  "player_image": {
+                    "type": "file"
+                  },
+                  "nickname": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  },
+                  "combate_class": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  }
                 },
-                "gender": {
-                  "type": "string"
-                },
-                "combat_class": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                }
+                "type": "object"
               }
             }
           }
-        }
-        ],
+        },
         "responses": {
           "201": {
-            "description": "Jogador criado com sucesso",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "player_image": {
-                  "type": "string"
-                },
-                "id": {
-                  "type": "integer"
-                },
-                "nickname": {
-                  "type": "string"
-                },
-                "gender": {
-                  "type": "string"
-                },
-                "combat_class": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                }
-              }
-            }
+            "description": "Player criado com sucesso"
           },
           "400": {
-            "description": "Os dados enviados estão incorretos",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "error": {
-                  "type": "string"
-                }
-              }
-            }
+            "description": "Erro ao criar um player"
           }
         }
       }

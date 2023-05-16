@@ -2,10 +2,10 @@ const CreateCharacterService = require('../../services/character/CreateCharacter
 
 module.exports = async (req, res) => {
   const { card_name, type, description, player_id } = req.body;
-  const { filename } = req.file;
+  const { player_image } = req.file;
   try {
     const character = await CreateCharacterService({
-      filename,
+      player_image,
       card_name,
       type,
       description,

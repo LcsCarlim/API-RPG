@@ -173,9 +173,11 @@
           "content": {
             "multipart/form-data": {
               "schema": {
+                "type": "object",
                 "properties": {
-                  "filename": {
-                    "type": "file"
+                  "file": {
+                    "type": "string",
+                    "format": "binary"
                   },
                   "nickname": {
                     "type": "string"
@@ -190,7 +192,8 @@
                     "type": "string"
                   }
                 },
-                "type": "object"
+                "required": ["nickname", "gender", "combat_class", "description"],
+                "x-form-data-encoding": "multipart"
               }
             }
           }

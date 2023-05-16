@@ -379,7 +379,7 @@
             "type": "string"
           }
         },
-        "required": ["filename", "nickname", "gender", "combate_class", "description"],
+        "required": ["filename", "nickname", "gender", "combat_class", "description"],
         "example": {
           "filename": "example.jpg",
           "nickname": "John Doe",

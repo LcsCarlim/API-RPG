@@ -1,4 +1,4 @@
-// const multer = require('multer');
+const multer = require('multer');
 const path = require('path');
 const crypto = require('crypto');
 const aws = require('aws-sdk');
@@ -37,7 +37,7 @@ const storageTypes = {
 };
 
 module.exports = {
-  dest: path.resolve('..', '..', 'temp/uploads', 'uploads'),
+  dest: path.resolve(__dirname, '..', '..', 'temp', 'uploads'),
   storage: storageTypes[process.env.STORAGE_TYPE],
   limits: {
     fileSize: 2 * 1024 * 1024

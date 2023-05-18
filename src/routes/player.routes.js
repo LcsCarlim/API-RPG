@@ -3,13 +3,13 @@ const routes = Router();
 const multer = require('multer');
 
 const userAuth = require('../middlewares/CheckTokenMiddleware');
-const playerMulterConfigPlayer = require('../config/PlayerMulterConfig');
+const playerMulterConfig = require('../config/PlayerMulterConfig');
 const CreatePlayerController = require('../controllers/player/CreatePlayerController');
 const FindPlayerByIdController = require('../controllers/player/FindPlayerByIdController');
 const ListAllPlayersController = require('../controllers/player/ListAllPlayersController');
 
 routes.post('/register',
-  multer(playerMulterConfigPlayer).single('filename'),
+  playerMulterConfig.uploadImage,
   userAuth,
   CreatePlayerController
 );

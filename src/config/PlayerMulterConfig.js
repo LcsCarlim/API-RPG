@@ -19,26 +19,27 @@ const storageTypes = {
   //     });
   //   }
   // }),
-  s3: multerS3({
-    s3: new aws.S3(),
-    bucket: process.env.BUCKET_NAME,
-    contentType: multerS3.AUTO_CONTENT_TYPE,
-    acl: 'public-read',
-    key: (req, file, cb) => {
-      crypto.randomBytes(16, (err, hash) => {
-        if (err) cb(err);
 
-        const filename = `${hash.toString('hex')}-${file.originalname}`;
+  const s3 = new aws.S3();
 
-        cb(null, filename);
-      });
-    }
-  })
-};
+const storage = multerS3({
+  s3: s3,
+  bucket: process.env.BUCKET_NAME,
+  contentType: multerS3.AUTO_CONTENT_TYPE,
+  acl: 'public-read',
+  key: (req, file, cb) => {
+    crypto.randomBytes(16, (err, hash) => {
+      if (err) cb(err);
 
-module.exports = {
-  dest: '/temp/player',
-  storage: storageTypes[process.env.STORAGE_TYPE],
+      const fileName = `${hash.toString('hex')}-${file.originalname}`;
+
+      cb(null, fileName);
+    });
+  }
+});
+
+const upload = multer({
+  storage: storage,
   limits: {
     fileSize: 2 * 1024 * 1024
   },
@@ -56,4 +57,7 @@ module.exports = {
       cb(new Error('Invalid file type.'));
     }
   }
-};
+});
+}
+
+module.exports = upload;

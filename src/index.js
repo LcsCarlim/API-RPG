@@ -4,7 +4,6 @@ const routes = require('./routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./swagger.json');
 const cors = require('cors');
-const path = require('path');
 const morgan = require('morgan');
 
 async function open (uri) {
@@ -23,10 +22,6 @@ app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-app.use(
-  '/files',
-  express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
-);
 
 app.use(routes);
 

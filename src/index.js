@@ -4,7 +4,6 @@ const routes = require('./routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocs = require('./swagger.json');
 const cors = require('cors');
-const morgan = require('morgan');
 
 async function open (uri) {
   await mongoose.connect(uri);
@@ -19,9 +18,6 @@ app.use(express.json());
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, { customCssUrl: CSS_URL }));
 
 app.use(cors());
-
-app.use(express.urlencoded({ extended: true }));
-app.use(morgan('dev'));
 
 app.use(routes);
 

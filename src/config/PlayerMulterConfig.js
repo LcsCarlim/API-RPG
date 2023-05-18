@@ -1,6 +1,7 @@
 const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
+const { S3Client } = require('@aws-sdk/client-s3');
 
 aws.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -8,7 +9,7 @@ aws.config.update({
   region: process.env.AWS_DEFAULT_REGION
 });
 
-const s3 = new aws.S3();
+const s3 = new S3Client();
 
 const upload = multer({
   storage: multerS3({
@@ -22,5 +23,5 @@ const upload = multer({
 });
 
 module.exports = {
-  uploadImage: upload.single('image')
+  uploadImage: upload.single('filename')
 };

@@ -9,7 +9,7 @@ const FindCharacterByIdController = require('../controllers/character/FindCharac
 const ListAllCharactersController = require('../controllers/character/ListAllCharactersController');
 
 routes.post('/register',
-  multer(documentMulterConfig).single('filename'),
+  documentMulterConfig.uploadImage,
   userAuth,
   CreateCharacterController
 );

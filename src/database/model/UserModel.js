@@ -37,7 +37,13 @@ const User = new mongoose.Schema({
   role: {
     type: String,
     default: 'User'
-  }
+  },
+  friends: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ]
 },
 {
   timestamps: {

@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const routes = Router();
-const multer = require('multer');
+// const multer = require('multer');
 
 const userAuth = require('../middlewares/CheckTokenMiddleware');
 const playerMulterConfig = require('../config/PlayerMulterConfig');
@@ -9,8 +9,8 @@ const FindPlayerByIdController = require('../controllers/player/FindPlayerByIdCo
 const ListAllPlayersController = require('../controllers/player/ListAllPlayersController');
 
 routes.post('/register',
-  playerMulterConfig.uploadImage,
   userAuth,
+  playerMulterConfig.uploadImage,
   CreatePlayerController
 );
 

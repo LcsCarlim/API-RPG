@@ -1,6 +1,5 @@
 const { Router } = require('express');
 const routes = Router();
-const multer = require('multer');
 
 const documentMulterConfig = require('../config/CharacterMulterConfig');
 const userAuth = require('../middlewares/CheckTokenMiddleware');
@@ -9,8 +8,8 @@ const FindCharacterByIdController = require('../controllers/character/FindCharac
 const ListAllCharactersController = require('../controllers/character/ListAllCharactersController');
 
 routes.post('/register',
-  documentMulterConfig.uploadImage,
   userAuth,
+  documentMulterConfig.uploadImage,
   CreateCharacterController
 );
 

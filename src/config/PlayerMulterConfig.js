@@ -1,21 +1,26 @@
-const aws = require('aws-sdk');
+// const aws = require('aws-sdk');
 const multer = require('multer');
 const multerS3 = require('multer-s3');
 const { S3Client } = require('@aws-sdk/client-s3');
 
-aws.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_DEFAULT_REGION
+const s3 = new S3Client({
+  region: process.env.AWS_DEFAULT_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+  },
+  sslEnabled: false,
+  s3ForcePathStyle: true,
+  signatureVersion: 'v4'
 });
-
-const s3 = new S3Client();
 
 const upload = multer({
   storage: multerS3({
     s3,
     bucket: process.env.BUCKET_NAME,
-    acl: 'public-read',
+    metadata: function (req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
+    },
     key: function (req, file, cb) {
       cb(null, Date.now().toString());
     }

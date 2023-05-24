@@ -1,5 +1,6 @@
 const { Router } = require('express');
 const routes = Router();
+
 const userAuth = require('../middlewares/CheckTokenMiddleware');
 const userLogout = require('../middlewares/LogoutMiddleware');
 const CreateUserController = require('../controllers/user/CreateUserController');
@@ -9,6 +10,7 @@ const LogoutUserController = require('../controllers/user/LogoutUserController')
 const FindUserByIdController = require('../controllers/user/FindUserByIdController');
 const DeleteUserController = require('../controllers/user/DeleteUserController');
 const AddFriendController = require('../controllers/user/AddFriendController');
+const ListAllFriendsController = require('../controllers/user/ListAllFriendsController');
 
 routes.post('/register',
   CreateUserController
@@ -38,9 +40,14 @@ routes.delete('/delete/:id',
   DeleteUserController
 );
 
-routes.post('/:id/friends',
+routes.post('/friends',
   userAuth,
   AddFriendController
+);
+
+routes.get('/listfriends',
+  userAuth,
+  ListAllFriendsController
 );
 
 module.exports = routes;

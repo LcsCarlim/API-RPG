@@ -1,7 +1,7 @@
 const AddFriendService = require('../../services/user/AddFriendService');
 
 module.exports = async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.user;
   const { friendId } = req.body;
 
   try {

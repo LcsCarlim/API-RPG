@@ -3,7 +3,7 @@
   "info": {
     "title": "API RPG",
     "description": "Essa API tem o objetivo a manipulação de dados",
-    "termsOfService": "https://api-rpg-gold.vercel.app/terms",
+    "termsOfService": "https://amendozonas.vercel.app/terms",
     "contact": {
       "email": "lucas.carlim@zuvia.com.br"
     },
@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://api-rpg-gold.vercel.app"
+      "url": "https://amendozonas.vercel.app"
     }
   ],
   "paths": {

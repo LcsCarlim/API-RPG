@@ -19,7 +19,17 @@ const upload = multer({
     s3,
     bucket: process.env.BUCKET_NAME,
     metadata: function (req, file, cb) {
-      cb(null, { fieldName: file.fieldname });
+      const allowedContentTypes = ['image/png', 'image/jpeg', 'image/gif']; // Lista de tipos de conteúdo permitidos
+      const fileType = file.mimetype;
+
+      if (allowedContentTypes.includes(fileType)) {
+        cb(null, {
+          fieldName: file.fieldname,
+          contentType: fileType
+        });
+      } else {
+        cb(new Error('File not suported.'), null);
+      }
     },
     key: function (req, file, cb) {
       cb(null, Date.now().toString());

@@ -82,6 +82,37 @@
         }
       }
     },
+    "/users/friends": {
+      "post": {
+        "summary": "Adiocionar amigos",
+        "description": "Essa rota será responsável por adicionar amigos",
+        "tags": [
+          "Usuário"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "friendId": {
+                    "type": "string"
+                  }
+                },
+                "type:": "object"
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Usuário adicionado"
+            },
+            "400": {
+              "description": "Erro ao adicionar um usuário"
+            }
+          }
+        }
+      }
+    },
     "/users/all": {
       "get": {
         "tags": [
@@ -130,37 +161,6 @@
           },
           "404": {
             "description": "Not found"
-          }
-        }
-      }
-    },
-    "/users/friends": {
-      "post": {
-        "summary": "Adiocionar amigos",
-        "description": "Essa rota será responsável por adicionar amigos",
-        "tags": [
-          "Usuário"
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "properties": {
-                  "friendId": {
-                    "type": "string"
-                  }
-                },
-                "type:": "object"
-              }
-            }
-          },
-          "responses": {
-            "201": {
-              "description": "Usuário adicionado"
-            },
-            "400": {
-              "description": "Erro ao adicionar usuário"
-            }
           }
         }
       }

@@ -149,7 +149,8 @@
                   "friendId": {
                     "type": "string"
                   }
-                }
+                },
+                "type:": "object"
               }
             }
           },

@@ -134,6 +134,36 @@
         }
       }
     },
+    "/users/friends": {
+      "post": {
+        "summary": "Adiocionar amigos",
+        "description": "Essa rota será responsável por adicionar amigos",
+        "tags": [
+          "Usuário"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "properties": {
+                  "friendId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Usuário adicionado"
+            },
+            "400": {
+              "description": "Erro ao adicionar usuário"
+            }
+          }
+        }
+      }
+    },
     "/users/delete/{id}": {
       "delete": {
         "summary": "Deletar um usuário",

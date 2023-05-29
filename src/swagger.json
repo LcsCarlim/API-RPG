@@ -113,10 +113,10 @@
         }
       }
     },
-    "/users/delete/friends": {
+    "/users/remove/friends": {
       "post": {
-        "summary": "Adicionar amigos",
-        "description": "Essa rota será responsável por adicionar amigos",
+        "summary": "Remover um amigo",
+        "description": "Essa rota será responsável por remover um amigo da lista",
         "tags": [
           "Usuário"
         ],
@@ -136,10 +136,10 @@
         },
         "responses": {
           "200": {
-            "description": "Usuário adicionado"
+            "description": "Usuário removido"
           },
           "400": {
-            "description": "Erro ao adicionar um usuário"
+            "description": "Erro ao remover um usuário"
           }
         }
       }
@@ -198,17 +198,17 @@
     },
     "/users/listfriends": {
       "get": {
-        "summary": "Deletar um amigo",
-        "description": "Essa rota será responsável por deletar um amigo do usuário",
+        "summary": "Listar os amigos",
+        "description": "Essa rota será responsável por listar todos os amigos do usuário",
         "tags": [
           "Usuário"
         ],
         "responses": {
           "200": {
-            "description": "Delete friend"
+            "description": "Friends"
           },
           "400": {
-            "description": "Erro ao deletar friend"
+            "description": "Erro ao listar friends"
           }
         }
       }

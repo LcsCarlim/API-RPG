@@ -51,7 +51,7 @@ routes.get('/listfriends',
   ListAllFriendsController
 );
 
-routes.post('/delete/friends',
+routes.post('/remove/friends',
   userAuth,
   RemoveFriendController
 );

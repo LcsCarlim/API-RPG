@@ -11,6 +11,7 @@ const FindUserByIdController = require('../controllers/user/FindUserByIdControll
 const DeleteUserController = require('../controllers/user/DeleteUserController');
 const AddFriendController = require('../controllers/user/AddFriendController');
 const ListAllFriendsController = require('../controllers/user/ListAllFriendsController');
+const RemoveFriendController = require('../controllers/user/RemoveFriendController');
 
 routes.post('/register',
   CreateUserController
@@ -48,6 +49,11 @@ routes.post('/friends',
 routes.get('/listfriends',
   userAuth,
   ListAllFriendsController
+);
+
+routes.post('/delete/friends',
+  userAuth,
+  RemoveFriendController
 );
 
 module.exports = routes;

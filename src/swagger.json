@@ -198,17 +198,17 @@
     },
     "/users/listfriends": {
       "get": {
-        "summary": "Listar os amigos",
-        "description": "Essa rota será responsável por listar todos os amigos do usuário",
+        "summary": "Deletar um amigo",
+        "description": "Essa rota será responsável por deletar um amigo do usuário",
         "tags": [
           "Usuário"
         ],
         "responses": {
           "200": {
-            "description": "Friends"
+            "description": "Delete friend"
           },
           "400": {
-            "description": "Erro ao listar friends"
+            "description": "Erro ao deletar friend"
           }
         }
       }

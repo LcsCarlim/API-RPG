@@ -1,10 +1,10 @@
 const ListAllFriendsService = require('../../services/user/ListAllFriendsService');
 
 module.exports = async (req, res) => {
-  const { friends } = req.user;
+  const { id } = req.user;
 
   try {
-    const listFriends = await ListAllFriendsService({ friends });
+    const listFriends = await ListAllFriendsService(id);
     return res.status(200).json(listFriends);
   } catch (error) {
     return res.status(500).json({

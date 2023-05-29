@@ -165,6 +165,23 @@
         }
       }
     },
+    "/users/listfriends": {
+      "get": {
+        "summary": "Listar os amigos",
+        "description": "Essa rota será responsável por listar todos os amigos do usuário",
+        "tags": [
+          "Usuário"
+        ],
+        "responses": {
+          "200": {
+            "description": "Friends"
+          },
+          "400": {
+            "description": "Erro ao listar friends"
+          }
+        }
+      }
+    },
     "/users/delete/{id}": {
       "delete": {
         "summary": "Deletar um usuário",

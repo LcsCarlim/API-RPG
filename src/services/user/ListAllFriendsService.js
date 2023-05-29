@@ -1,10 +1,8 @@
 const UserModel = require('../../database/model/UserModel');
 
-module.exports = async (friends) => {
-  try {
-    const listFriends = await UserModel.findById(friends);
-    return listFriends.friends;
-  } catch (error) {
-    throw new Error('Error listing friends');
-  }
+module.exports = async (id) => {
+  const user = await UserModel.findById(id);
+  if (!user) { throw new Error('User not found'); }
+
+  return user.friends;
 };

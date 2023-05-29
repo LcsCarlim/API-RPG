@@ -103,8 +103,15 @@
             }
           },
           "responses": {
-            "200": {
-              "description": "Usuário adicionado"
+            "201": {
+              "description": "Usuário criado com sucesso!",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
             },
             "400": {
               "description": "Erro ao adicionar um usuário"
@@ -386,9 +393,12 @@
           },
           "number": {
             "type": "string"
+          },
+          "friends": {
+            "type": "string"
           }
         },
-        "required": ["name", "last_name", "email", "password", "confirm_password", "phone_number", "cep", "number"]
+        "required": ["name", "last_name", "email", "password", "confirm_password", "phone_number", "cep", "number", "friends"]
       },
       "Player": {
         "type": "object",

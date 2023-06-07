@@ -6,14 +6,11 @@ module.exports = async ({ name, last_name, email, password, confirm_password, ph
     email
   });
   if (emailExists) throw new Error('Email already exists!');
-  console.log(emailExists);
 
   const phoneExists = await UserModel.findOne({
     phone_number
   });
   if (phoneExists) throw new Error('Phone number already exists!');
-
-  if (password !== confirm_password) throw new Error("Password doesn't match");
 
   const response = await GetCepGateway(cep);
 

@@ -15,6 +15,7 @@ module.exports = async body => {
       .pattern(/^[a-zA-Z0-9]{3,30}$/)
       .required()
       .min(6),
+    confirm_password: Joi.ref('password'),
     phone_number: Joi.string()
       .required()
       .min(11),
@@ -24,7 +25,7 @@ module.exports = async body => {
       .required()
   });
   try {
-    return await schema.validateAsync(body);
+    return await schema.validate(body);
   } catch (error) {
     return error;
   }

@@ -15,7 +15,9 @@ module.exports = async body => {
       .pattern(/^[a-zA-Z0-9]{3,30}$/)
       .required()
       .min(6),
-    confirm_password: Joi.ref('password'),
+    confirm_password: Joi.string()
+      .required()
+      .min(6),
     phone_number: Joi.string()
       .required()
       .min(11),

@@ -18,7 +18,7 @@ module.exports = async body => {
     confirm_password: Joi.ref('password'),
     phone_number: Joi.string()
       .required()
-      .min(11),
+      .regex(/^\d{10}$/),
     cep: Joi.string()
       .required(),
     number: Joi.string()

@@ -7,7 +7,7 @@ const playerMulterConfig = require('../config/PlayerMulterConfig');
 const CreatePlayerController = require('../controllers/player/CreatePlayerController');
 const FindPlayerByIdController = require('../controllers/player/FindPlayerByIdController');
 const ListAllPlayersController = require('../controllers/player/ListAllPlayersController');
-const FindAllPlayersFromUserController = require('../controllers/player/FindAllPlayersFromUserController');
+const ListAllUserPlayersController = require('../controllers/player/ListAllUserPlayersController');
 
 routes.post('/register',
   userAuth,
@@ -25,9 +25,9 @@ routes.get('/list',
   ListAllPlayersController
 );
 
-routes.get('/allplayers',
+routes.get('/userplayers',
   userAuth,
-  FindAllPlayersFromUserController
+  ListAllUserPlayersController
 );
 
 module.exports = routes;

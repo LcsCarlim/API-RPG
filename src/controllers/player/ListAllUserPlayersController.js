@@ -1,9 +1,9 @@
-const FindAllPlayersFromUserService = require('../../services/player/FindAllPlayersFromUserService');
+const ListAllUserPlayersService = require('../../services/player/ListAllUserPlayersService');
 
 module.exports = async (req, res) => {
   const { id } = req.user;
   try {
-    const user = await FindAllPlayersFromUserService(id);
+    const user = await ListAllUserPlayersService(id);
     res.status(200).json({
       success: true,
       user

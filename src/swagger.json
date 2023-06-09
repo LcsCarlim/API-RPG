@@ -319,7 +319,7 @@
         }
       }
     },
-    "/players/allplayers": {
+    "/players/userplayers": {
       "get": {
         "summary": "Listar todos os players do usuário logado",
         "description": "Essa rota será responsável por listar todos os players de um usuário logado",

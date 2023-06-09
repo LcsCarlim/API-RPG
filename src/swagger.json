@@ -319,6 +319,30 @@
         }
       }
     },
+    "/players/allplayers": {
+      "get": {
+        "summary": "Listar todos os players do usuário logado",
+        "description": "Essa rota será responsável por listar todos os players de um usuário logado",
+        "tags": [
+          "Player"
+        ],
+        "responses": {
+          "200": {
+            "description": "Players",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Player"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro na listagem"
+          }
+        }
+      }
+    },
     "/characters/register": {
       "post": {
         "summary": "Criação de um personagem",

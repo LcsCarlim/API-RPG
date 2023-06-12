@@ -3,13 +3,13 @@ const Joi = require('joi');
 module.exports = async body => {
   const schema = Joi.object({
     card_name: Joi.string()
-      .alphanum()
+      .regex(/^[a-zA-Z0-9\s]+$/)
       .required(),
     type: Joi.string()
-      .alphanum()
+      .regex(/^[a-zA-Z0-9\s]+$/)
       .required(),
     description: Joi.string()
-      .alphanum()
+      .regex(/^[a-zA-Z0-9\s]+$/)
       .required()
   });
   try {

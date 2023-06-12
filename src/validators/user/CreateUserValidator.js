@@ -6,7 +6,7 @@ module.exports = async body => {
       .alphanum()
       .required(),
     last_name: Joi.string()
-      .alphanum()
+      .regex(/^[a-zA-Z0-9\s]+$/)
       .required(),
     email: Joi.string()
       .required()

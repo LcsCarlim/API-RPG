@@ -3,17 +3,17 @@ const Joi = require('joi');
 module.exports = async body => {
   const schema = Joi.object({
     nickname: Joi.string()
-      .alphanum()
-      .requried(),
+      .regex(/^[a-zA-Z0-9\s]+$/)
+      .required(),
     gender: Joi.string()
-      .alphanum()
+      .regex(/^[a-zA-Z0-9\s]+$/)
       .required(),
     combat_class: Joi.string()
-      .alphanum()
+      .regex(/^[a-zA-Z0-9\s]+$/)
       .required(),
     description: Joi.string()
-      .alphanum()
-      .requried()
+      .regex(/^[a-zA-Z0-9\s]+$/)
+      .required()
   });
   try {
     return await schema.validate(body);

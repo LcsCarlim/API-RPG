@@ -22,6 +22,21 @@ routes.post('/login',
   CreateUserAuthController
 );
 
+routes.post('/logout',
+  userLogout,
+  LogoutUserController
+);
+
+routes.post('/friends',
+  userAuth,
+  AddFriendController
+);
+
+routes.post('/remove/friends',
+  userAuth,
+  RemoveFriendController
+);
+
 routes.get('/all',
   userAuth,
   ListAllUsersController
@@ -32,24 +47,9 @@ routes.get('/userself',
   UserSelfInformationController
 );
 
-routes.post('/logout',
-  userLogout,
-  LogoutUserController
-);
-
 routes.get('/find/:id',
   userAuth,
   FindUserByIdController
-);
-
-routes.delete('/delete/:id',
-  userAuth,
-  DeleteUserController
-);
-
-routes.post('/friends',
-  userAuth,
-  AddFriendController
 );
 
 routes.get('/listfriends',
@@ -57,9 +57,9 @@ routes.get('/listfriends',
   ListAllFriendsController
 );
 
-routes.post('/remove/friends',
+routes.delete('/delete/:id',
   userAuth,
-  RemoveFriendController
+  DeleteUserController
 );
 
 module.exports = routes;

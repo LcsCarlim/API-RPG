@@ -12,6 +12,7 @@ const DeleteUserController = require('../controllers/user/DeleteUserController')
 const AddFriendController = require('../controllers/user/AddFriendController');
 const ListAllFriendsController = require('../controllers/user/ListAllFriendsController');
 const RemoveFriendController = require('../controllers/user/RemoveFriendController');
+const UserSelfInformationController = require('../controllers/user/UserSelfInformationController');
 
 routes.post('/register',
   CreateUserController
@@ -24,6 +25,11 @@ routes.post('/login',
 routes.get('/all',
   userAuth,
   ListAllUsersController
+);
+
+routes.get('/userself',
+  userAuth,
+  UserSelfInformationController
 );
 
 routes.post('/logout',

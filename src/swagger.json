@@ -369,7 +369,7 @@
     },
     "/characters/register": {
       "post": {
-        "summary": "Criação de um personagem",
+        "summary": "Criação de um card",
         "description": "Essa rota será responsável em criar um personagem referente a um player",
         "tags": [
           "Character"

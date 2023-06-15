@@ -24,6 +24,10 @@ const Player = new mongoose.Schema({
   user_id: {
     type: String,
     required: false
+  },
+  location: {
+    type: String,
+    required: true
   }
 },
 {

@@ -17,17 +17,20 @@ const upload = multer({
   storage: multerS3({
     s3,
     bucket: process.env.BUCKET_NAME,
+    contentType: multerS3.AUTO_CONTENT_TYPE,
     metadata: function (req, file, cb) {
-      const allowedContentTypes = ['image/png', 'image/jpeg', 'image/gif']; // Lista de tipos de conteúdo permitidos
+      const allowedContentTypes = ['image/png', 'image/jpeg'];
       const fileType = file.mimetype;
+
+      console.log(fileType);
 
       if (allowedContentTypes.includes(fileType)) {
         cb(null, {
-          fieldName: file.fieldname,
+          // fieldName: file.fieldname,
           contentType: fileType
         });
       } else {
-        cb(new Error('File not suported.'), null);
+        cb(new Error('File not supported.'), null);
       }
     },
     key: function (req, file, cb) {

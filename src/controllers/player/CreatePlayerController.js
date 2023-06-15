@@ -18,7 +18,8 @@ module.exports = async (req, res) => {
       gender,
       combat_class,
       description,
-      user_id: id
+      user_id: id,
+      location
     });
     return res.status(201).json(player);
   } catch (error) {

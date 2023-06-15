@@ -6,6 +6,7 @@ module.exports = async (req, res) => {
   const { nickname, gender, combat_class, description } = req.body;
   const { originalname, location } = req.file;
   try {
+    console.log(req.file);
     const validator = await CreatePlayerValidator(req.body);
     if (validator.error) throw validator.error;
 

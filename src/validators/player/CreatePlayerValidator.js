@@ -4,7 +4,8 @@ module.exports = async body => {
   const schema = Joi.object({
     nickname: Joi.string()
       .regex(/^[a-zA-Z0-9\s]+$/)
-      .required(),
+      .required()
+      .max(10),
     gender: Joi.string()
       .regex(/^[a-zA-Z0-9\s]+$/)
       .required(),

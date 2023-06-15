@@ -5,6 +5,7 @@ module.exports = async body => {
     nickname: Joi.string()
       .regex(/^[a-zA-Z0-9\s]+$/)
       .required()
+      .min(4)
       .max(10),
     gender: Joi.string()
       .regex(/^[a-zA-Z0-9\s]+$/)

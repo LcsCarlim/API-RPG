@@ -10,6 +10,8 @@ module.exports = async body => {
       .required(),
     description: Joi.string()
       .regex(/^[a-zA-Z0-9\s]+$/)
+      .required(),
+    player_id: Joi.string()
       .required()
   });
   try {

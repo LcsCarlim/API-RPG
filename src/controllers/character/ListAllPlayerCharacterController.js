@@ -1,12 +1,12 @@
-const ListAllUserPlayersService = require('../../services/player/ListAllUserPlayersService');
+const ListAllPlayerCharacterService = require('../../services/character/ListAllPlayerCharacterService');
 
 module.exports = async (req, res) => {
   const { id } = req.user;
   try {
-    const players = await ListAllUserPlayersService(id);
+    const characters = await ListAllPlayerCharacterService(id);
     res.status(200).json({
       success: true,
-      players
+      characters
     });
   } catch (error) {
     res.status(400).json({

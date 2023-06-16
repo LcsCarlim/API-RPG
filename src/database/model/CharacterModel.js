@@ -20,6 +20,10 @@ const Character = new mongoose.Schema({
   player_id: {
     type: String,
     required: false
+  },
+  location: {
+    type: String,
+    required: true
   }
 },
 {

@@ -6,6 +6,7 @@ const userAuth = require('../middlewares/CheckTokenMiddleware');
 const CreateCharacterController = require('../controllers/character/CreateCharacterController');
 const FindCharacterByIdController = require('../controllers/character/FindCharacterByIdController');
 const ListAllCharactersController = require('../controllers/character/ListAllCharactersController');
+const ListAllPlayerCharacterController = require('../controllers/character/ListAllPlayerCharacterController');
 
 routes.post('/register',
   userAuth,
@@ -21,6 +22,11 @@ routes.get('/find/:id',
 routes.get('/list',
   userAuth,
   ListAllCharactersController
+);
+
+routes.get('/playercharacter',
+  userAuth,
+  ListAllPlayerCharacterController
 );
 
 module.exports = routes;
